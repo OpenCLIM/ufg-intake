@@ -1,0 +1,46 @@
+kind: Model
+api_version: v1beta1
+metadata:
+  display_name: UFG Intake model
+  name: ufg-intake
+  summary: A utility tool sorting data inputs for UFG runs from UDM model outputs
+  publisher: Newcastle University
+  source_code: https://github.com/OpenCLIM/ufg-intake
+  description: >
+    A tool for taking outputs from UDM model runs and preparing the outputs for use in other models, such as for UFG (urban fabric generator). Also generates a single parameters file which can be used to ensure provenance of results generated through storing key parameters in a single location.
+spec:
+  inputs:
+    parameters:
+      - name: file_to_copy
+        title: File to copy
+        description: The name of the file to be handeled in anything following analysis which is undertaken by a model beyond this one.
+        type: string
+        required: false
+        default: 'out_cell_dph.asc'
+      - name: save_logfile
+        title: save logfile
+        type: string
+        description: Save logfile
+        default: 'False'
+        required: false
+        options:
+          - name: 'False'
+            title: False
+          - name: 'True'
+            title: True
+    dataslots:
+      - name: Input data files
+        description: An archive of data outputs from UDM model runs or a single UDM run.
+        path: inputs/data
+        required: true
+        default:
+          - 129f9361-b2ed-460f-a44b-9eeaf00b769c
+
+  outputs:
+    datasets:
+      - name: outputs/*.asc
+        type: folder
+        description: path to processed data outputs
+      - name: outputs/*.log
+        type: Text
+        description: log file
