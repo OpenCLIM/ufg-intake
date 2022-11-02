@@ -1,2 +1,3 @@
 # ufg-intake
-Prepared data for UFG from UDM outputs
+Prepare data for UFG from UDM outputs, and create a single parameters csv file.
+

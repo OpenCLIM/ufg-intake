@@ -1,0 +1,17 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: docker build . -t ufg-intake
+
+      - name: Test
+        run: docker run -v $PWD/data:/data --env file_to_copy='out_cell_dph.asc' --env save_logfile=True -t ufg-intake
+

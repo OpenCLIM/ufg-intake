@@ -66,6 +66,8 @@ data.mkdir(exist_ok=True)
 
 inputs = data / 'inputs'
 
+data_input = inputs / 'data'
+
 outputs = data / 'outputs'
 
 outputs.mkdir(exist_ok=True)
@@ -94,7 +96,7 @@ if keyword is None:
 
 
 # get list of files to extract
-files = [f for f in os.listdir(inputs) if isfile(join(inputs, f))]
+files = [f for f in os.listdir(data_input) if isfile(join(data_input, f))]
 logger.info('Archives found: %s' %files)
 print(files)
 
@@ -106,7 +108,7 @@ for archive in files:
     if archive.split('.')[-1:][0] == 'zip':
         logger.info('Running an unzip')
         subprocess.call(['unzip',
-                         join('/data/inputs', archive),    # source
+                         join(data_input, archive),    # source
                          '-d', inputs,         # destination directory
                          ])
     break
