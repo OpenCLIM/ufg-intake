@@ -165,8 +165,8 @@ logger.info('Starting process of generating metadata json file')
 
 # create json for metadata for outputs
 # set the output title, description and so on
-output_title = ''
-output_description = ''
+output_title = 'UFG Outputs - %s_%s_%s' (ssp,year,floodzone)
+output_description = 'Outputs from the UFG model for a run of the UDM model. Scenario parameters: SSP=%s, YEAR=%s, Floodzone:%s. Output includes a key parameters file containing the parameter values linked to each run' %(ssp, year, floodzone)
 
 output_path = metadata_output
 file_name = 'metadata'
